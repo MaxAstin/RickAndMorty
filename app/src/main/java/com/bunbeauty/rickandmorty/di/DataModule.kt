@@ -1,8 +1,6 @@
 package com.bunbeauty.rickandmorty.di
 
-import com.bunbeauty.rickandmorty.data.ApiService
-import com.squareup.moshi.FromJson
-import com.squareup.moshi.JsonReader
+import com.bunbeauty.rickandmorty.data.CharacterApiService
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -25,13 +23,13 @@ class DataModule {
 
     @Singleton
     @Provides
-    fun provideApiService(moshi: Moshi): ApiService {
+    fun provideApiService(moshi: Moshi): CharacterApiService {
         val okHttpClient = OkHttpClient.Builder().build()
         val retrofit = Retrofit.Builder()
             .baseUrl("https://rickandmortyapi.com/api/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttpClient)
             .build()
-        return retrofit.create(ApiService::class.java)
+        return retrofit.create(CharacterApiService::class.java)
     }
 }

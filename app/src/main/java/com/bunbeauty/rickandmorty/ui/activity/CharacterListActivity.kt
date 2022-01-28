@@ -1,24 +1,19 @@
 package com.bunbeauty.rickandmorty.ui.activity
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.lifecycleScope
-import com.bunbeauty.rickandmorty.R
 import com.bunbeauty.rickandmorty.databinding.ActivityCaharacterListBinding
-import com.bunbeauty.rickandmorty.state.State
+import com.bunbeauty.rickandmorty.presentation.state.State
 import com.bunbeauty.rickandmorty.ui.CharacterAdapter
-import com.bunbeauty.rickandmorty.view_model.MainViewModel
+import com.bunbeauty.rickandmorty.presentation.view_model.CharacterListViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class CharacterListActivity : BaseActivity() {
 
-    private val mainViewModel: MainViewModel by viewModels()
+    private val characterListViewModel: CharacterListViewModel by viewModels()
 
     @Inject
     lateinit var characterAdapter: CharacterAdapter
@@ -29,7 +24,7 @@ class CharacterListActivity : BaseActivity() {
         setContentView(binding.root)
 
         binding.activityCharacterListRvMain.adapter = characterAdapter
-        mainViewModel.characterItemListState.launchWhenStarted { state ->
+        characterListViewModel.characterItemListState.launchWhenStarted { state ->
             when (state) {
                 is State.Loading -> {
                     binding.activityCharacterListPbLoading.visibility = View.VISIBLE

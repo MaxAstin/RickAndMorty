@@ -1,8 +1,8 @@
-package com.bunbeauty.rickandmorty.view_model
+package com.bunbeauty.rickandmorty.presentation.view_model
 
 import androidx.lifecycle.ViewModel
 import com.bunbeauty.rickandmorty.domain.Result
-import com.bunbeauty.rickandmorty.state.State
+import com.bunbeauty.rickandmorty.presentation.state.State
 
 abstract class BaseViewModel: ViewModel() {
 

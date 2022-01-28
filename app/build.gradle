@@ -45,6 +45,8 @@ dependencies {
         hiltVersion = "2.40.1"
         coilVersion = "1.4.0"
         retrofitVersion = "2.9.0"
+        mockitoVersion = "4.0.0"
+        coroutinesVersion = "1.6.0"
     }
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -71,5 +73,11 @@ dependencies {
 
     //Moshi
     implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+
+    //Mockito
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+
+    //CoroutinesTest
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
 
 }

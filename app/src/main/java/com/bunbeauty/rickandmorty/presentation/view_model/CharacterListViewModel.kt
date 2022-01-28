@@ -1,10 +1,10 @@
-package com.bunbeauty.rickandmorty.view_model
+package com.bunbeauty.rickandmorty.presentation.view_model
 
 import androidx.lifecycle.viewModelScope
 import com.bunbeauty.rickandmorty.domain.Character
 import com.bunbeauty.rickandmorty.domain.ICharacterInteractor
+import com.bunbeauty.rickandmorty.presentation.state.State
 import com.bunbeauty.rickandmorty.ui.item.CharacterItem
-import com.bunbeauty.rickandmorty.state.State
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class CharacterListViewModel @Inject constructor(
     private val characterInteractor: ICharacterInteractor
 ) : BaseViewModel() {
 

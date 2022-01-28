@@ -1,4 +1,4 @@
-package com.bunbeauty.rickandmorty.state
+package com.bunbeauty.rickandmorty.presentation.state
 
 sealed class State<T> {
     class Loading<T>(): State<T>()
