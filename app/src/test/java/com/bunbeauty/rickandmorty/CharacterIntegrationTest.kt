@@ -5,7 +5,7 @@ import com.bunbeauty.rickandmorty.Constants.TEST_NAME
 import com.bunbeauty.rickandmorty.Constants.TEST_PHOTO_LINK
 import com.bunbeauty.rickandmorty.data.CharacterApiService
 import com.bunbeauty.rickandmorty.data.CharacterRepository
-import com.bunbeauty.rickandmorty.data.Constants.BODY_IS_NULL
+import com.bunbeauty.rickandmorty.data.Constants.ERROR_MESSAGE_BODY_IS_NULL
 import com.bunbeauty.rickandmorty.data.mapper.CharacterMapper
 import com.bunbeauty.rickandmorty.domain.Character
 import com.bunbeauty.rickandmorty.domain.CharacterInteractor
@@ -66,7 +66,7 @@ class CharacterIntegrationTest {
     @Test
     fun whenResponseIsSuccessfulAndEmpty() = runBlocking {
         val expectedState = State.Error<List<Character>>(
-            message = "$SUCCESS_CODE $BODY_IS_NULL"
+            message = "$SUCCESS_CODE $ERROR_MESSAGE_BODY_IS_NULL"
         )
 
         Mockito.`when`(characterApiService.getCharacters(PAGE_NUMBER))

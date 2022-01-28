@@ -1,6 +1,6 @@
 package com.bunbeauty.rickandmorty.data
 
-import com.bunbeauty.rickandmorty.data.Constants.BODY_IS_NULL
+import com.bunbeauty.rickandmorty.data.Constants.ERROR_MESSAGE_BODY_IS_NULL
 import retrofit2.Response
 import com.bunbeauty.rickandmorty.domain.Result
 
@@ -10,7 +10,7 @@ abstract class BaseRepository {
         val responseBody = body()
         return if (isSuccessful) {
             if (responseBody == null) {
-                Result.Error("${code()} $BODY_IS_NULL")
+                Result.Error("${code()} $ERROR_MESSAGE_BODY_IS_NULL")
             } else {
                 Result.Success(map(responseBody))
             }
