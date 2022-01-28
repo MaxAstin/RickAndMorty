@@ -2,5 +2,5 @@ package com.bunbeauty.rickandmorty.domain
 
 interface ICharacterRepository {
 
-    suspend fun loadCharacterList(): Result<List<Character>>
+    suspend fun loadCharacterList(pageNumber: Int): Result<List<Character>>
 }

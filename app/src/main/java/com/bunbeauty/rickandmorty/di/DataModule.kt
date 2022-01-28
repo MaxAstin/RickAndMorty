@@ -1,6 +1,7 @@
 package com.bunbeauty.rickandmorty.di
 
 import com.bunbeauty.rickandmorty.data.CharacterApiService
+import com.bunbeauty.rickandmorty.data.Constants.API_URL
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -26,7 +27,7 @@ class DataModule {
     fun provideApiService(moshi: Moshi): CharacterApiService {
         val okHttpClient = OkHttpClient.Builder().build()
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://rickandmortyapi.com/api/")
+            .baseUrl(API_URL)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(okHttpClient)
             .build()

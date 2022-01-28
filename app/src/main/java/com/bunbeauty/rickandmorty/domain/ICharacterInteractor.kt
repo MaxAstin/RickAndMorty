@@ -1,5 +1,5 @@
 package com.bunbeauty.rickandmorty.domain
 
 interface ICharacterInteractor {
-    suspend fun loadCharacterList(): Result<List<Character>>
+    suspend fun loadCharacterFirstPage(): Result<List<Character>>
 }

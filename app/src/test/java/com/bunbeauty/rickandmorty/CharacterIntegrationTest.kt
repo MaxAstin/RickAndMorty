@@ -6,9 +6,6 @@ import com.bunbeauty.rickandmorty.Constants.TEST_PHOTO_LINK
 import com.bunbeauty.rickandmorty.data.CharacterApiService
 import com.bunbeauty.rickandmorty.data.CharacterRepository
 import com.bunbeauty.rickandmorty.data.Constants.BODY_IS_NULL
-import com.bunbeauty.rickandmorty.data.dto.CharacterDTO
-import com.bunbeauty.rickandmorty.data.dto.InfoDTO
-import com.bunbeauty.rickandmorty.data.dto.ResultDTO
 import com.bunbeauty.rickandmorty.data.mapper.CharacterMapper
 import com.bunbeauty.rickandmorty.domain.Character
 import com.bunbeauty.rickandmorty.domain.CharacterInteractor
@@ -21,14 +18,10 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.setMain
-import okhttp3.Protocol
-import okhttp3.Request
-import okhttp3.ResponseBody
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
-import retrofit2.Response
 
 class CharacterIntegrationTest {
 

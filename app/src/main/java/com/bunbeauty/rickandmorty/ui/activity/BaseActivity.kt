@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.onEach
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    fun <T> Flow<T>.launchWhenStarted(block: suspend (T) -> Unit) {
+    protected fun <T> Flow<T>.launchWhenStarted(block: suspend (T) -> Unit) {
         flowWithLifecycle(lifecycle, Lifecycle.State.STARTED).onEach {
             block(it)
         }.launchIn(lifecycleScope)

@@ -6,7 +6,7 @@ import com.bunbeauty.rickandmorty.domain.Result
 
 abstract class BaseRepository {
 
-    inline fun <DTO, T> Response<DTO>.handleResponse(map: (DTO) -> T): Result<T> {
+    protected inline fun <DTO, T> Response<DTO>.handleResponse(map: (DTO) -> T): Result<T> {
         val responseBody = body()
         return if (isSuccessful) {
             if (responseBody == null) {

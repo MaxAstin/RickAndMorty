@@ -5,9 +5,8 @@ import com.bunbeauty.rickandmorty.domain.Result
 import com.bunbeauty.rickandmorty.presentation.state.State
 
 abstract class BaseViewModel: ViewModel() {
-
-
-    fun <DM, T> Result<DM>.toState(map: (DM) -> T): State<T> {
+    
+    protected fun <DM, T> Result<DM>.toState(map: (DM) -> T): State<T> {
         return when (this) {
             is Result.Success -> {
                 State.Success(map(data))

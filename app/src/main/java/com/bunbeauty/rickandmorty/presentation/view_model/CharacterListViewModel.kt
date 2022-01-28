@@ -26,16 +26,16 @@ class CharacterListViewModel @Inject constructor(
         loadCharacters()
     }
 
-    fun loadCharacters() {
+    private fun loadCharacters() {
         viewModelScope.launch {
             mutableCharacterItemListState.value =
-                characterInteractor.loadCharacterList().toState { characterList ->
+                characterInteractor.loadCharacterFirstPage().toState { characterList ->
                     characterList.map(::toCharacterItem)
                 }
         }
     }
 
-    fun toCharacterItem(character: Character): CharacterItem {
+    private fun toCharacterItem(character: Character): CharacterItem {
         return CharacterItem(
             name = character.name,
             photoLink = character.photoLink

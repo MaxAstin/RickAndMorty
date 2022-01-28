@@ -17,7 +17,7 @@ class CharacterApiTestUtil {
 
     fun getSuccessResponse(): Response<ResultDTO<CharacterDTO>> {
         return Response.success(
-            200,
+            SUCCESS_CODE,
             ResultDTO(
                 info = InfoDTO(
                     count = 0,

@@ -33,7 +33,7 @@ class CharacterListViewModelTest {
 
     @Test
     fun whenResultIsSuccessful() = runBlocking {
-        Mockito.`when`(characterInteractor.loadCharacterList())
+        Mockito.`when`(characterInteractor.loadCharacterFirstPage())
             .thenReturn(getSuccessResult())
         characterListViewModel = CharacterListViewModel(characterInteractor)
 
@@ -51,7 +51,7 @@ class CharacterListViewModelTest {
 
     @Test
     fun whenErrorResult() = runBlocking {
-        Mockito.`when`(characterInteractor.loadCharacterList())
+        Mockito.`when`(characterInteractor.loadCharacterFirstPage())
             .thenReturn(getErrorResult())
         characterListViewModel = CharacterListViewModel(characterInteractor)
 
@@ -62,7 +62,7 @@ class CharacterListViewModelTest {
         assertEquals(expectedState, characterListViewModel.characterItemListState.value)
     }
 
-    fun getSuccessResult(): Result.Success<List<Character>> {
+    private fun getSuccessResult(): Result.Success<List<Character>> {
         return Result.Success(
             listOf(
                 Character(
@@ -73,7 +73,7 @@ class CharacterListViewModelTest {
         )
     }
 
-    fun getErrorResult(): Result.Error<List<Character>> {
+    private fun getErrorResult(): Result.Error<List<Character>> {
         return Result.Error(
             message = ERROR_MESSAGE
         )

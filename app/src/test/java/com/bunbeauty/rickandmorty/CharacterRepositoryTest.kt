@@ -2,6 +2,7 @@ package com.bunbeauty.rickandmorty
 
 import com.bunbeauty.rickandmorty.Constants.ERROR_CODE
 import com.bunbeauty.rickandmorty.Constants.ERROR_MESSAGE
+import com.bunbeauty.rickandmorty.Constants.PAGE_NUMBER
 import com.bunbeauty.rickandmorty.Constants.SUCCESS_CODE
 import com.bunbeauty.rickandmorty.Constants.TEST_NAME
 import com.bunbeauty.rickandmorty.Constants.TEST_PHOTO_LINK
@@ -17,7 +18,6 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
-
 
 class CharacterRepositoryTest {
 
@@ -45,11 +45,10 @@ class CharacterRepositoryTest {
                 )
             )
         )
-        val pageNumber = 1
-        Mockito.`when`(characterApiService.getCharacters(pageNumber))
+        Mockito.`when`(characterApiService.getCharacters(PAGE_NUMBER))
             .thenReturn(characterApiTestUtil.getSuccessResponse())
 
-        val result = characterRepository.loadCharacterList()
+        val result = characterRepository.loadCharacterList(PAGE_NUMBER)
 
         assertEquals(expectedResult, result)
     }
@@ -57,11 +56,10 @@ class CharacterRepositoryTest {
     @Test
     fun whenResponseIsSuccessfulAndEmpty() = runBlocking {
         val expectedResult = Result.Error<Character>("$SUCCESS_CODE $BODY_IS_NULL")
-        val pageNumber = 1
-        Mockito.`when`(characterApiService.getCharacters(pageNumber))
+        Mockito.`when`(characterApiService.getCharacters(PAGE_NUMBER))
             .thenReturn(characterApiTestUtil.getEmptyResponse())
 
-        val result = characterRepository.loadCharacterList()
+        val result = characterRepository.loadCharacterList(PAGE_NUMBER)
 
         assertEquals(expectedResult, result)
     }
@@ -69,11 +67,10 @@ class CharacterRepositoryTest {
     @Test
     fun whenErrorResponse() = runBlocking {
         val expectedResult = Result.Error<Character>("$ERROR_CODE $ERROR_MESSAGE")
-        val pageNumber = 1
-        Mockito.`when`(characterApiService.getCharacters(pageNumber))
+        Mockito.`when`(characterApiService.getCharacters(PAGE_NUMBER))
             .thenReturn(characterApiTestUtil.getResponseWithError())
 
-        val result = characterRepository.loadCharacterList()
+        val result = characterRepository.loadCharacterList(PAGE_NUMBER)
 
         assertEquals(expectedResult, result)
     }

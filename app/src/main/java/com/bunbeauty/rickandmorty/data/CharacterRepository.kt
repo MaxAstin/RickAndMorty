@@ -11,8 +11,8 @@ class CharacterRepository @Inject constructor(
     private val characterMapper: CharacterMapper
 ) : BaseRepository(), ICharacterRepository {
 
-    override suspend fun loadCharacterList(): Result<List<Character>> {
-        return characterApiService.getCharacters(1).handleResponse { resultDTO ->
+    override suspend fun loadCharacterList(pageNumber: Int): Result<List<Character>> {
+        return characterApiService.getCharacters(pageNumber).handleResponse { resultDTO ->
             resultDTO.results.map(characterMapper::toCharacter)
         }
     }
